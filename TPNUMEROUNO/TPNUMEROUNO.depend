@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1598903735 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\programacion_1_laboratorio_1\tpnumerouno\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1598905020 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tpnumerouno\main.c
+	<stdio.h>
+	<stdlib.h>
+
