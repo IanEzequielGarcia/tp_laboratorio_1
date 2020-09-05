@@ -18,11 +18,7 @@ e) “El factorial de A es: r1 y El factorial de B es: r2”
 */
 #include <stdio.h>
 #include <stdlib.h>
-
-int Suma(int numeroUno,int numeroDos);
-int Resta(int numeroUno,int numeroDos);
-int Multiplicacion(int numeroUno,int numeroDos);
-float Division(int numeroUno,int numeroDos);
+#include "funciones.h"
 
 int main()
 {
@@ -44,38 +40,8 @@ int main()
     printf("El resultado de la Multiplicacion es %d \n",resultadoInt);
     resultadoFloat= Division(primerNumero,segundoNumero);
     printf("El resultado de la Division es %.2f \n",resultadoFloat);
+    resultadoInt= Recursividad(primerNumero);
+    printf("El resultado de la factorizacion del primer numero es %d \n",resultadoInt);
 
     return 0;
-}
-int Suma(int numeroUno,int numeroDos)
-{
-    int resultado;
-    resultado=numeroUno+numeroDos;
-    return resultado;
-}
-int Resta(int numeroUno,int numeroDos)
-{
-    int resultado;
-    resultado=numeroUno-numeroDos;
-    return resultado;
-}
-int Multiplicacion(int numeroUno,int numeroDos)
-{
-    int resultado;
-    resultado=numeroUno*numeroDos;
-    return resultado;
-}
-float Division(int numeroUno,int numeroDos)
-{
-    float resultado;
-    if(numeroUno!=0 && numeroDos!=0)
-    {
-        resultado=(float)numeroUno/numeroDos;
-    }
-    else
-    {
-        printf("No se puede dividir por cero \n");
-        return -1;
-    }
-    return resultado;
 }

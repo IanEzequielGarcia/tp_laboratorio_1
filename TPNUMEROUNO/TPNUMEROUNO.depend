@@ -3,7 +3,14 @@
 	<stdio.h>
 	<stdlib.h>
 
-1598905020 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tpnumerouno\main.c
+1599071729 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tpnumerouno\main.c
 	<stdio.h>
 	<stdlib.h>
+	"funciones.h"
+
+1599071697 c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tpnumerouno\funciones.h
+
+1599314476 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tpnumerouno\funciones.c
+	"funciones.h"
+	"stdio.h"
 
