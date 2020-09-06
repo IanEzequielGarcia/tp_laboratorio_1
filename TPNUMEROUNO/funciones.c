@@ -34,7 +34,10 @@ float Division(int numeroUno,int numeroDos)
 int Recursividad(int numeroUno)
 {
  int resultado;
-
+    if(numeroUno<0)
+    {
+        return 0;
+    }
     if(numeroUno == 0)
     {
         resultado = 1;

@@ -74,8 +74,15 @@ int main()
                 {
                     printf("El resultado de la Division es %.2f \n",resultadoFloat);
                 }
-                printf("El resultado de la factorizacion del primer numero es %d \n",resultadoFactorizacionr1);
-                printf("El resultado de la factorizacion del segundo numero es %d \n",resultadoFactorizacionr2);
+                if(resultadoFactorizacionr1==0||resultadoFactorizacionr2==0)
+                {
+                    printf("haga el factorial de un numero mayor a 0\n");
+                }
+                else
+                {
+                    printf("El resultado de la factorizacion del primer numero es %d \n",resultadoFactorizacionr1);
+                    printf("El resultado de la factorizacion del segundo numero es %d \n",resultadoFactorizacionr2);
+                }
                 break;
             case 5:
                 printf("Muchas gracias por usar la pseudoCalculadora, hasta la proxima");
