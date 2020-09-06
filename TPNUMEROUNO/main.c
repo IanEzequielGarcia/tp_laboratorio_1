@@ -35,6 +35,9 @@ int main()
 
     while(loopMenu==0)
     {
+        printf("A=%d\n",primerNumero);
+        printf("B=%d\n",segundoNumero);
+
         printf("1.Ingresar 1er operando\n");
         printf("2.Ingresar 2do operando\n");
         printf("3.Calcular todas las operaciones\n");
@@ -46,12 +49,10 @@ int main()
             case 1:
                 printf("Ingrese el primer numero\n");
                 scanf("%d",&primerNumero);
-                printf("A=%d\n",primerNumero);
                 break;
             case 2:
                 printf("Ingrese el segundo numero\n");
                 scanf("%d",&segundoNumero);
-                printf("B=%d\n",segundoNumero);
                 break;
             case 3:
                 resultadoSuma= Suma(primerNumero,segundoNumero);
