@@ -65,7 +65,14 @@ int main()
                 printf("El resultado de la suma es %d \n",resultadoSuma);
                 printf("El resultado de la resta es %d \n",resultadoResta);
                 printf("El resultado de la Multiplicacion es %d \n",resultadoMultiplicacion);
-                printf("El resultado de la Division es %.2f \n",resultadoFloat);
+                if(resultadoFloat==0)
+                {
+                    printf("No se puede dividir por 0\n");
+                }
+                else
+                {
+                    printf("El resultado de la Division es %.2f \n",resultadoFloat);
+                }
                 printf("El resultado de la factorizacion del primer numero es %d \n",resultadoFactorizacionr1);
                 printf("El resultado de la factorizacion del segundo numero es %d \n",resultadoFactorizacionr2);
                 break;

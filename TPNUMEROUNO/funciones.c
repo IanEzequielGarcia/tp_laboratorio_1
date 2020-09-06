@@ -27,7 +27,6 @@ float Division(int numeroUno,int numeroDos)
     }
     else
     {
-        printf("No se puede dividir por cero \n");
         return 0;
     }
     return resultado;
