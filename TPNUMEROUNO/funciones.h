@@ -9,7 +9,7 @@ int Suma(int numeroUno,int numeroDos);
 /** \brief Resta dos int
  *
  * \param numeroUno int primer int a restar
- * \param numeroDos int segundo int a sumar
+ * \param numeroDos int segundo int a restar
  * \return int resultado
  *
  */
@@ -22,7 +22,7 @@ int Resta(int numeroUno,int numeroDos);
  *
  */
 int Multiplicacion(int numeroUno,int numeroDos);
-/** \brief Convierte uno de los dos int a float y los divide
+/** \brief Convierte el primer int a float y los divide
  *
  * \param numeroUno int int a dividir que se convierte a float
  * \param numeroDos int int divisor
