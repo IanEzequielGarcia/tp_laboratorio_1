@@ -22,56 +22,63 @@ e) “El factorial de A es: r1 y El factorial de B es: r2”
 
 int main()
 {
-    int primerNumero;
-    int segundoNumero;
-    int tipoOperacion;
-    int loopPregunta=0;
-    int resultadoInt;
+    int primerNumero=0;
+    int segundoNumero=0;
+    int seleccionMenu;
+    int loopMenu=0;
+    int resultadoSuma;
+    int resultadoResta;
+    int resultadoMultiplicacion;
+    int resultadoFactorizacionr1;
+    int resultadoFactorizacionr2;
     float resultadoFloat;
 
-    printf("Ingrese el primer numero\n");
-    scanf("%d",&primerNumero);
-    printf("Ingrese el segundo numero\n");
-    scanf("%d",&segundoNumero);
-
-    while(loopPregunta==0)
+    while(loopMenu==0)
     {
-        printf("Ingrese el tipo de operacion\n");
-        printf("1.Calcular la suma (A+B)\n");
-        printf("2.Calcular la resta (A-B)\n");
-        printf("3.Calcular la multiplicacion (A*B)\n");
-        printf("4.Calcular la division (A/B)\n");
-        printf("5.Calcular el factorial (A!)\n");
-        printf("6.Salir\n");
-        scanf("%d",&tipoOperacion);
-
-        switch(tipoOperacion)
+        printf("1.Ingresar 1er operando\n");
+        printf("2.Ingresar 2do operando\n");
+        printf("3.Calcular todas las operaciones\n");
+        printf("4.Mostar resultados\n");
+        printf("5. Salir\n");
+        scanf("%d",&seleccionMenu);
+         switch(seleccionMenu)
         {
             case 1:
-                resultadoInt= Suma(primerNumero,segundoNumero);
-                printf("El resultado de la suma es %d \n",resultadoInt);
+                printf("Ingrese el primer numero\n");
+                scanf("%d",&primerNumero);
+                printf("A=%d\n",primerNumero);
                 break;
             case 2:
-                resultadoInt= Resta(primerNumero,segundoNumero);
-                printf("El resultado de la resta es %d \n",resultadoInt);
+                printf("Ingrese el segundo numero\n");
+                scanf("%d",&segundoNumero);
+                printf("B=%d\n",segundoNumero);
                 break;
             case 3:
-                resultadoInt= Multiplicacion(primerNumero,segundoNumero);
-                printf("El resultado de la Multiplicacion es %d \n",resultadoInt);
+                resultadoSuma= Suma(primerNumero,segundoNumero);
+                resultadoResta= Resta(primerNumero,segundoNumero);
+                resultadoMultiplicacion= Multiplicacion(primerNumero,segundoNumero);
+                resultadoFloat= Division(primerNumero,segundoNumero);
+                resultadoFactorizacionr1= Recursividad(primerNumero);
+                resultadoFactorizacionr2= Recursividad(segundoNumero);
                 break;
             case 4:
-                 resultadoFloat= Division(primerNumero,segundoNumero);
-                 printf("El resultado de la Division es %.2f \n",resultadoFloat);
-                 break;
-            case 5:
-                resultadoInt= Recursividad(primerNumero);
-                printf("El resultado de la factorizacion del primer numero es %d \n",resultadoInt);
+                printf("El resultado de la suma es %d \n",resultadoSuma);
+                printf("El resultado de la resta es %d \n",resultadoResta);
+                printf("El resultado de la Multiplicacion es %d \n",resultadoMultiplicacion);
+                printf("El resultado de la Division es %.2f \n",resultadoFloat);
+                printf("El resultado de la factorizacion del primer numero es %d \n",resultadoFactorizacionr1);
+                printf("El resultado de la factorizacion del segundo numero es %d \n",resultadoFactorizacionr2);
                 break;
-            case 6:
-                loopPregunta=1;
+            case 5:
+                printf("Muchas gracias por usar la pseudoCalculadora, hasta la proxima");
+                loopMenu=1;
                 break;
         }
     }
 
     return 0;
 }
+
+
+
+
