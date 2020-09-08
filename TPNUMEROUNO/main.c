@@ -22,50 +22,54 @@ e) “El factorial de A es: r1 y El factorial de B es: r2”
 
 int main()
 {
-    int primerNumero=0;
-    int segundoNumero=0;
+    float primerNumero=0;
+    float segundoNumero=0;
+    int factorizarPrimerNumero;
+    int factorizarSegundoNumero;
     int seleccionMenu;
     int loopMenu=0;
-    int resultadoSuma;
-    int resultadoResta;
-    int resultadoMultiplicacion;
+    float resultadoSuma;
+    float resultadoResta;
+    float resultadoMultiplicacion;
     int resultadoFactorizacionr1;
     int resultadoFactorizacionr2;
     float resultadoFloat;
 
     while(loopMenu==0)
     {
-        printf("A=%d\n",primerNumero);
-        printf("B=%d\n",segundoNumero);
+        printf("A=%.2f\n",primerNumero);
+        printf("B=%.2f\n",segundoNumero);
 
         printf("1.Ingresar 1er operando\n");
         printf("2.Ingresar 2do operando\n");
         printf("3.Calcular todas las operaciones\n");
         printf("4.Mostar resultados\n");
-        printf("5. Salir\n");
+        printf("5. Salir\n\n");
         scanf("%d",&seleccionMenu);
          switch(seleccionMenu)
         {
             case 1:
                 printf("Ingrese el primer numero\n");
-                scanf("%d",&primerNumero);
+                scanf("%f",&primerNumero);
+                factorizarPrimerNumero=primerNumero;
                 break;
             case 2:
                 printf("Ingrese el segundo numero\n");
-                scanf("%d",&segundoNumero);
+                scanf("%f",&segundoNumero);
+                factorizarSegundoNumero=segundoNumero;
                 break;
             case 3:
                 resultadoSuma= Suma(primerNumero,segundoNumero);
                 resultadoResta= Resta(primerNumero,segundoNumero);
                 resultadoMultiplicacion= Multiplicacion(primerNumero,segundoNumero);
                 resultadoFloat= Division(primerNumero,segundoNumero);
-                resultadoFactorizacionr1= Recursividad(primerNumero);
-                resultadoFactorizacionr2= Recursividad(segundoNumero);
+                resultadoFactorizacionr1= Recursividad(factorizarPrimerNumero);
+                resultadoFactorizacionr2= Recursividad(factorizarSegundoNumero);
                 break;
             case 4:
-                printf("El resultado de la suma es %d \n",resultadoSuma);
-                printf("El resultado de la resta es %d \n",resultadoResta);
-                printf("El resultado de la Multiplicacion es %d \n",resultadoMultiplicacion);
+                printf("El resultado de la suma es %.2f \n",resultadoSuma);
+                printf("El resultado de la resta es %.2f \n",resultadoResta);
+                printf("El resultado de la Multiplicacion es %.2f \n",resultadoMultiplicacion);
                 if(resultadoFloat==0)
                 {
                     printf("No se puede dividir por 0\n");

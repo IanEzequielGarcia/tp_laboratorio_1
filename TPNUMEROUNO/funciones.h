@@ -1,35 +1,35 @@
-/** \brief Suma de dos int
+/** \brief Suma de dos float
  *
- * \param numeroUno int primer int a sumar
- * \param numeroDos int segundo int a sumar
- * \return int resultado
- *
- */
-int Suma(int numeroUno,int numeroDos);
-/** \brief Resta dos int
- *
- * \param numeroUno int primer int a restar
- * \param numeroDos int segundo int a restar
- * \return int resultado
- *
- */
-int Resta(int numeroUno,int numeroDos);
-/** \brief Multiplica dos int
- *
- * \param numeroUno int primer int a multiplicar
- * \param numeroDos int segundo int a multiplicar
- * \return int resultado
- *
- */
-int Multiplicacion(int numeroUno,int numeroDos);
-/** \brief Convierte el primer int a float y los divide
- *
- * \param numeroUno int int a dividir que se convierte a float
- * \param numeroDos int int divisor
+ * \param numeroUno float primer float a sumar
+ * \param numeroDos float segundo float a sumar
  * \return float resultado
  *
  */
-float Division(int numeroUno,int numeroDos);
+float Suma(float numeroUno,float numeroDos);
+/** \brief Resta dos float
+ *
+ * \param numeroUno float primer float a restar
+ * \param numeroDos float segundo float a restar
+ * \return float resultado
+ *
+ */
+float Resta(float numeroUno,float numeroDos);
+/** \brief Multiplica dos float
+ *
+ * \param numeroUno float primer float a multiplicar
+ * \param numeroDos float segundo float a multiplicar
+ * \return float resultado
+ *
+ */
+float Multiplicacion(float numeroUno,float numeroDos);
+/** \brief Convierte el primer float a float y los divide
+ *
+ * \param numeroUno float float a dividir que se convierte a float
+ * \param numeroDos float float divisor
+ * \return float resultado
+ *
+ */
+float Division(float numeroUno,float numeroDos);
 /** \brief Factorizacion del int
  *
  * \param numeroUno int El numero del que se calcula el factorial

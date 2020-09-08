@@ -1,24 +1,24 @@
 #include "funciones.h"
 #include "stdio.h"
-int Suma(int numeroUno,int numeroDos)
+float Suma(float numeroUno,float numeroDos)
 {
-    int resultado;
+    float resultado;
     resultado=numeroUno+numeroDos;
     return resultado;
 }
-int Resta(int numeroUno,int numeroDos)
+float Resta(float numeroUno,float numeroDos)
 {
-    int resultado;
+    float resultado;
     resultado=numeroUno-numeroDos;
     return resultado;
 }
-int Multiplicacion(int numeroUno,int numeroDos)
+float Multiplicacion(float numeroUno,float numeroDos)
 {
-    int resultado;
+    float resultado;
     resultado=numeroUno*numeroDos;
     return resultado;
 }
-float Division(int numeroUno,int numeroDos)
+float Division(float numeroUno,float numeroDos)
 {
     float resultado;
     if(numeroUno!=0 && numeroDos!=0)
