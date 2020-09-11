@@ -31,8 +31,8 @@ int main()
     float resultadoSuma;
     float resultadoResta;
     float resultadoMultiplicacion;
-    int resultadoFactorizacionr1;
-    int resultadoFactorizacionr2;
+    long int resultadoFactorizacionr1;
+    long int resultadoFactorizacionr2;
     float resultadoFloat;
     int banderaOperaciones=0;
 
@@ -74,42 +74,19 @@ int main()
                 resultadoFactorizacionr2= Recursividad(factorizarSegundoNumero);
 
                 banderaOperaciones=1;
+                printf("\nOperaciones realizadas\n\n");
                 break;
                 }
             case 4:
-                if(banderaOperaciones==0)
-                {
-                    printf("\nPor favor, primero seleccione la opcion 3 y haga las operaciones\n\n");
-                    break;
-                }
-                else
-                {
-                    printf("\nEl resultado de la suma es %.2f \n",resultadoSuma);
-                    printf("El resultado de la resta es %.2f \n",resultadoResta);
-                    printf("El resultado de la Multiplicacion es %.2f \n",resultadoMultiplicacion);
-                    if(resultadoFloat==0)
-                    {
-                        printf("No se puede dividir por 0\n");
-                    }
-                    else
-                    {
-                        printf("El resultado de la Division es %.2f \n",resultadoFloat);
-                    }
-                    if(resultadoFactorizacionr1==0||resultadoFactorizacionr2==0)
-                    {
-                        printf("haga el factorial de un numero mayor a 0\n");
-                    }
-                    else
-                    {
-                        printf("El resultado de la factorizacion del primer numero es %d \n",resultadoFactorizacionr1);
-                        printf("El resultado de la factorizacion del segundo numero es %d \n\n",resultadoFactorizacionr2);
-                    }
-                    break;
-                case 5:
-                    printf("\nMuchas gracias por usar la pseudoCalculadora, hasta la proxima\n");
-                    loopMenu=1;
-                    break;
-                }
+                MostrarResultados(banderaOperaciones,resultadoSuma,resultadoResta,resultadoMultiplicacion,resultadoFloat,resultadoFactorizacionr1,resultadoFactorizacionr2);
+                break;
+            case 5:
+                printf("\nMuchas gracias por usar la pseudoCalculadora, hasta la proxima\n");
+                loopMenu=1;
+                break;
+            default:
+                printf("\nERROR! Por favor elija una opcion entre 1 y 5\n");
+                break;
 
         }
     }
