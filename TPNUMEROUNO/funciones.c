@@ -74,13 +74,21 @@ void MostrarResultados(int banderaOperaciones,float resultadoSuma,float resultad
             {
                 printf("El resultado de la Division es %.2f \n",resultadoFloat);
             }
-            if(resultadoFactorizacionr1==0||resultadoFactorizacionr2==0)
+            // validacion factorizaciones
+            if(resultadoFactorizacionr1==0)
             {
-                printf("haga el factorial de un numero mayor a 0\n");
+                printf("A debe ser 0 o positivo para factorizar\n");
             }
             else
             {
                 printf("El resultado de la factorizacion del primer numero es %ld \n",resultadoFactorizacionr1);
+            }
+            if(resultadoFactorizacionr2==0)
+            {
+                printf("B debe ser 0 o positivo para factorizar\n");
+            }
+            else
+            {
                 printf("El resultado de la factorizacion del segundo numero es %ld \n\n",resultadoFactorizacionr2);
             }
         }
