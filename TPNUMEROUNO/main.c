@@ -66,16 +66,16 @@ int main()
                 }
                 else
                 {
-                resultadoSuma= Suma(primerNumero,segundoNumero);
-                resultadoResta= Resta(primerNumero,segundoNumero);
-                resultadoMultiplicacion= Multiplicacion(primerNumero,segundoNumero);
-                resultadoFloat= Division(primerNumero,segundoNumero);
-                resultadoFactorizacionr1= Recursividad(factorizarPrimerNumero);
-                resultadoFactorizacionr2= Recursividad(factorizarSegundoNumero);
+                    resultadoSuma= Suma(primerNumero,segundoNumero);
+                    resultadoResta= Resta(primerNumero,segundoNumero);
+                    resultadoMultiplicacion= Multiplicacion(primerNumero,segundoNumero);
+                    resultadoFloat= Division(primerNumero,segundoNumero);
+                    resultadoFactorizacionr1= Recursividad(factorizarPrimerNumero);
+                    resultadoFactorizacionr2= Recursividad(factorizarSegundoNumero);
 
-                banderaOperaciones=1;
-                printf("\nOperaciones realizadas\n\n");
-                break;
+                    banderaOperaciones=1;
+                    printf("\nOperaciones realizadas\n\n");
+                    break;
                 }
             case 4:
                 MostrarResultados(banderaOperaciones,resultadoSuma,resultadoResta,resultadoMultiplicacion,resultadoFloat,resultadoFactorizacionr1,resultadoFactorizacionr2);
