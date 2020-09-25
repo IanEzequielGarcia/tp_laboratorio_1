@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1601068149 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tpnumerodos\main.c
+	<stdio.h>
+	<string.h>
+	"ArrayEmployees.h"
+
+1601068374 c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tpnumerodos\arrayemployees.h
+
+1601068149 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tpnumerodos\arrayemployees.c
+	"ArrayEmployees.h"
+	<stdio.h>
+	<string.h>
+
