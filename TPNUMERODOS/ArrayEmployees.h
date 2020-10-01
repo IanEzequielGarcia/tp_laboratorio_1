@@ -12,14 +12,14 @@ typedef struct eEmployee
 
 eEmployee eEmployeeArray[TAM];
 
-/** \brief Adds an employee to the eEmployeeArray struct
+/** \brief moves the entered arrays into eEmployeeArray struct
  *
  * \param eEmployee[]
  * \param int
  * \return eEmployee
  *
  */
-eEmployee addEmployees(eEmployee[],int);
+void LoadEmployees(eEmployee[],int);
 /** \brief Prints the employees stored in the eEmployee array
  *
  * \param eEmployee[]
@@ -91,3 +91,16 @@ void Menu(eEmployee[]);
  *
  */
 int findEmployeeById(eEmployee[],int);
+/** \brief Allows the user to input into the arrays of the employee
+ *
+ * \param eEmployee[]
+ * \param char[51]
+ * \param char[51]
+ * \param float
+ * \param int
+ * \param int
+ * \param int
+ * \return eEmployee
+ *
+ */
+eEmployee addEmployee(eEmployee[],char[51],char[51],float,int,int,int);

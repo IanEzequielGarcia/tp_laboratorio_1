@@ -3,48 +3,59 @@
 #include <string.h>
 
 
-eEmployee addEmployees(eEmployee eEmployeeArray[],int cant)
+void LoadEmployees(eEmployee eEmployeeArray[],int cant)
 {
-    eEmployee inEmpleado;
-    int i;
     int hayEspacio;
-    hayEspacio=SearchForFree(eEmployeeArray,cant);
-    for(i=0;i<cant;i++)
-    {
-        if(hayEspacio==i)
-        {
-            inEmpleado.id=i;
-            printf("Ingrese su nombre\n");
-           fflush(stdin);
-            scanf("%[^\n]",inEmpleado.name);
-            printf("Ingrese su apellido\n");
-           fflush(stdin);
-            scanf("%[^\n]",inEmpleado.lastName);
-            printf("Ingrese su sector\n");
-            scanf("%d",&inEmpleado.sector);
-            while(inEmpleado.sector<-1)
-            {
-                printf("Ingrese un sector mayor a -1\n");
-                scanf("%d",&inEmpleado.sector);
-            }
-            printf("Ingrese su salario\n");
-            scanf("%f",&inEmpleado.salary);
-            while(inEmpleado.salary<0)
-            {
-                printf("Ingrese un salario mayor a 0\n");
-                scanf("%f",&inEmpleado.salary);
-            }
-            inEmpleado.isEmpty=0;
-            break;
-        }
-        else if(hayEspacio==-1)
-        {
-            printf("\nNO HAY MAS ESPACIO\n\n");
-            break;
-        }
-    }
 
-    return inEmpleado;
+    char name[51];
+    char lastName[51];
+    float salary;
+    int sector;
+    int isEmpty;
+    int id;
+    hayEspacio=SearchForFree(eEmployeeArray,cant);
+    if(hayEspacio!=-1)
+    {
+        id=hayEspacio;
+        printf("Ingrese su nombre\n");
+       fflush(stdin);
+        scanf("%[^\n]",name);
+        printf("Ingrese su apellido\n");
+       fflush(stdin);
+        scanf("%[^\n]",lastName);
+        printf("Ingrese su sector\n");
+        scanf("%d",&sector);
+        while(sector<-1)
+        {
+            printf("Ingrese un sector mayor a -1\n");
+            scanf("%d",&sector);
+        }
+        printf("Ingrese su salario\n");
+        scanf("%f",&salary);
+        while(salary<0)
+        {
+            printf("Ingrese un salario mayor a 0\n");
+            scanf("%f",&salary);
+        }
+        isEmpty=0;
+    }
+    else
+    {
+        printf("\nNO HAY MAS ESPACIO\n\n");
+    }
+    addEmployee(eEmployeeArray,name,lastName,salary,sector,isEmpty,id);
+
+}
+eEmployee addEmployee(eEmployee eEmployeeArray[],char nombre[],char apeliido[],float salario,int Asector,int AisEmpty,int Aid)
+{
+    strcpy(eEmployeeArray[Aid].name,nombre);
+    strcpy(eEmployeeArray[Aid].lastName,apeliido);
+    eEmployeeArray[Aid].salary=salario;
+    eEmployeeArray[Aid].sector=Asector;
+    eEmployeeArray[Aid].isEmpty=AisEmpty;
+    eEmployeeArray[Aid].id=Aid;
+
+    return eEmployeeArray[Aid];
 }
 void PrintEmployees(eEmployee elEmpleado[TAM],int cant)
 {
@@ -161,7 +172,7 @@ int SearchForFree(eEmployee libreEmployee[],int cant)
     int i;
     int haylibre=-1;
 
-    for(i=0;i<cant;i++)
+    for(i=1;i<cant;i++)
     {
         if(libreEmployee[i].id==-1&&libreEmployee[i].isEmpty!=0)
         {
@@ -214,49 +225,46 @@ void ModifyEmployee(eEmployee moEmpleado[TAM])
     }
     printf("Elija el id del empleado a modificar\n");
     scanf("%d",&eleccion);
-    for(i=0;i<TAM;i++)
+    encontrado=findEmployeeById(moEmpleado,eleccion);
+    if(encontrado==1)
     {
-        encontrado=findEmployeeById(moEmpleado,eleccion);
-        if(encontrado==1)
+        printf("Que va a modificar?\n1.Nombre\n2.Apellido\n3.Salario\n4.Sector\n");
+        scanf("%d",&menu);
+        switch(menu)
         {
-            printf("Que va a modificar?\n1.Nombre\n2.Apellido\n3.Salario\n4.Sector\n");
-            scanf("%d",&menu);
-            switch(menu)
-            {
-                case 1:
-                    printf("Ingrese el nuevo nombre\n");
-                   fflush(stdin);
-                    scanf("%[^\n]",moEmpleado[i].name);
-                    break;
-                case 2:
-                    printf("Ingrese el nuevo Apellido\n");
-                   fflush(stdin);
-                    scanf("%[^\n]",moEmpleado[i].lastName);
-                    break;
-                case 3:
-                    printf("Ingrese el nuevo Salario\n");
-                    scanf("%f",&moEmpleado[i].salary);
-                    break;
-                case 4:
-                    printf("Ingrese el nuevo Sector\n");
-                    scanf("%d",&moEmpleado[i].sector);
-                    break;
-                default:
-                    printf("\nIntente con las opciones entre 1 y 4\n");
-                    break;
-            }
-            break;
+            case 1:
+                printf("Ingrese el nuevo nombre\n");
+               fflush(stdin);
+                scanf("%[^\n]",moEmpleado[eleccion].name);
+                break;
+            case 2:
+                printf("Ingrese el nuevo Apellido\n");
+               fflush(stdin);
+                scanf("%[^\n]",moEmpleado[eleccion].lastName);
+                break;
+            case 3:
+                printf("Ingrese el nuevo Salario\n");
+                scanf("%f",&moEmpleado[eleccion].salary);
+                break;
+            case 4:
+                printf("Ingrese el nuevo Sector\n");
+                scanf("%d",&moEmpleado[eleccion].sector);
+                break;
+            default:
+                printf("\nIntente con las opciones entre 1 y 4\n");
+                break;
         }
-        else
-        {
-            printf("\nEse ID no coincide con ninguno en nuestro sistema, carge otro y reintente\n");
-            break;
-        }
+
     }
+    else
+    {
+        printf("\nEse ID no coincide con ninguno en nuestro sistema, carge otro y reintente\n");
+
+    }
+
 }
 void Menu(eEmployee eEmployeeArray[])
 {
-        int i=0;
     int menu;
     int banderaCaseOne=0;
 
@@ -267,9 +275,8 @@ void Menu(eEmployee eEmployeeArray[])
         switch(menu)
         {
             case 1:
-                eEmployeeArray[i]=addEmployees(eEmployeeArray,TAM);
+                LoadEmployees(eEmployeeArray,TAM);
                 banderaCaseOne=1;
-                i++;
                 break;
             case 2:
                 if(banderaCaseOne==1)
@@ -312,7 +319,7 @@ int findEmployeeById(eEmployee idEmployee[],int idBuscada)
     int encontrado=-1;
     for(i=0;i<TAM;i++)
     {
-        if(idEmployee[i].id==idBuscada)
+        if(idEmployee[i].id==idBuscada&&idEmployee[i].isEmpty==0)
         {
             encontrado=1;
             break;
