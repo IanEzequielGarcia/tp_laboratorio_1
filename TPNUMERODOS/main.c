@@ -17,59 +17,8 @@ carga de algún empleado.
 
 int main()
 {
-    int i=0;
-    int menu;
-    int banderaCaseOne=0;
-
-
     InitEmployees(eEmployeeArray,TAM);
-    do
-    {
-        printf("1.Añadir Empleado\n2.Modificar Empleado\n3.Dar de baja\n4.Mostrar Empleados\n10.salir\n");
-        scanf("%d",&menu);
-        switch(menu)
-        {
-            case 1:
-                eEmployeeArray[i]=addEmployees(eEmployeeArray,TAM);
-                banderaCaseOne=1;
-                i++;
-                break;
-            case 2:
-                if(banderaCaseOne==1)
-                {
-                    ModifyEmployee(eEmployeeArray);
-                }
-                else
-                {
-                 printf("Debe cargar algun numero primero\n");
-                }
-                break;
-            case 3:
-                if(banderaCaseOne==1)
-                {
-                    RemoveEmployee(eEmployeeArray);
-                }
-                else
-                {
-                 printf("Debe cargar algun numero primero\n");
-                }
-                break;
-            case 4:
-                if(banderaCaseOne==1)
-                {
-                    PrintEmployees(eEmployeeArray,TAM);
-                    printf("\n");
-                }
-                else
-                {
-                 printf("Debe cargar algun numero primero\n");
-                }
-
-                break;
-        }
-    }while(menu!=10);
-
-
+    Menu(eEmployeeArray);
     return 0;
 }
 

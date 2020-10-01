@@ -74,3 +74,20 @@ int SearchForFree(eEmployee[],int);
  *
  */
 void RemoveEmployee(eEmployee[]);
+
+/** \brief The menu that the user sees when he executes the program
+ *
+ * \param eEmployee[]
+ * \return void
+ *
+ */
+void Menu(eEmployee[]);
+
+/** \brief Finds an employee by searching his ID
+ *
+ * \param eEmployee[]
+ * \param int
+ * \return int
+ *
+ */
+int findEmployeeById(eEmployee[],int);

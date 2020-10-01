@@ -169,7 +169,6 @@ int SearchForFree(eEmployee libreEmployee[],int cant)
             libreEmployee[i].isEmpty=0;
             break;
         }
-
     }
     return haylibre;
 }
@@ -204,6 +203,7 @@ void ModifyEmployee(eEmployee moEmpleado[TAM])
     int i;
     int eleccion;
     int menu;
+    int encontrado;
     printf("   ID    NOMBRE   SECTOR\n");
     for(i=0;i<TAM;i++)
     {
@@ -216,7 +216,8 @@ void ModifyEmployee(eEmployee moEmpleado[TAM])
     scanf("%d",&eleccion);
     for(i=0;i<TAM;i++)
     {
-        if(moEmpleado[i].id==eleccion)
+        encontrado=findEmployeeById(moEmpleado,eleccion);
+        if(encontrado==1)
         {
             printf("Que va a modificar?\n1.Nombre\n2.Apellido\n3.Salario\n4.Sector\n");
             scanf("%d",&menu);
@@ -240,10 +241,83 @@ void ModifyEmployee(eEmployee moEmpleado[TAM])
                     printf("Ingrese el nuevo Sector\n");
                     scanf("%d",&moEmpleado[i].sector);
                     break;
+                default:
+                    printf("\nIntente con las opciones entre 1 y 4\n");
+                    break;
             }
+            break;
+        }
+        else
+        {
+            printf("\nEse ID no coincide con ninguno en nuestro sistema, carge otro y reintente\n");
+            break;
         }
     }
 }
+void Menu(eEmployee eEmployeeArray[])
+{
+        int i=0;
+    int menu;
+    int banderaCaseOne=0;
 
+    do
+    {
+        printf("1.Aniadir Empleado\n2.Modificar Empleado\n3.Dar de baja\n4.Mostrar Empleados\n10.salir\n");
+        scanf("%d",&menu);
+        switch(menu)
+        {
+            case 1:
+                eEmployeeArray[i]=addEmployees(eEmployeeArray,TAM);
+                banderaCaseOne=1;
+                i++;
+                break;
+            case 2:
+                if(banderaCaseOne==1)
+                {
+                    ModifyEmployee(eEmployeeArray);
+                }
+                else
+                {
+                 printf("\nDebe cargar algun empleado primero\n");
+                }
+                break;
+            case 3:
+                if(banderaCaseOne==1)
+                {
+                    RemoveEmployee(eEmployeeArray);
+                }
+                else
+                {
+                 printf("\nDebe cargar algun empleado primero\n");
+                }
+                break;
+            case 4:
+                if(banderaCaseOne==1)
+                {
+                    PrintEmployees(eEmployeeArray,TAM);
+                    printf("\n");
+                }
+                else
+                {
+                 printf("\nDebe cargar algun empleado primero\n");
+                }
 
+                break;
+        }
+    }while(menu!=10);
+}
+int findEmployeeById(eEmployee idEmployee[],int idBuscada)
+{
+    int i;
+    int encontrado=-1;
+    for(i=0;i<TAM;i++)
+    {
+        if(idEmployee[i].id==idBuscada)
+        {
+            encontrado=1;
+            break;
+        }
+    }
+    return encontrado;
+}
 
