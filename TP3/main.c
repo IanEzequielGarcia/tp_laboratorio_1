@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+#include "parser.h"
 #include <string.h>
 #include "funciones.h"
 /****************************************************
@@ -82,6 +83,7 @@ int main()
     for(int i=0;i<len;i++)
     {
        aux = (Employee*) ll_get(miLista,i);
+       employee_getId(Employee* this,&i);
        printf("(%d) %d %s %d %d\n",i+1,aux->id,aux->nombre,aux->sueldo,aux->horasTrabajadas);
     }
 

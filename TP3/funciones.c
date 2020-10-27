@@ -16,8 +16,10 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
 {
     int menu=0;
     int opcion;
-    int len,i;
-    int cant=0;
+    int index;
+    int len;
+    int i=0;
+    int cant;
     char nombre[50];
     char horasTrabajadas[50];
     char sueldo[50];
@@ -32,31 +34,35 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
         {
             case 1:
                     pArchivo=fopen("data.csv","r");
-                    len=parser_EmployeeFromText(pArchivo, miLista,empleado);
+                    if(pArchivo==NULL)
+                    {
+                        printf("Archivo incorrecto");
+                        break;
+                    }
+
                     do
                     {
+                        //len=parser_EmployeeFromText(pArchivo, empleado,i);
                         cant = fscanf(pArchivo,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horasTrabajadas,sueldo);
                         if(cant==4)
                         {
                         empleado[i]=(Employee*)malloc(sizeof(Employee));
-
-                        empleado[i]->id = atoi(id);
-                        strcpy(empleado[i]->nombre,nombre);//sizeof(arrayPersonas[i].nombre));
-                        empleado[i]->horasTrabajadas=atoi(horasTrabajadas);//sizeof(arrayPersonas[i].apellido));
-                        empleado[i]->sueldo = atoi(sueldo);
+                        employee_setId(empleado[i],i+1);
+                        //empleado[i]->id = atoi(id);
+                        employee_setNombre(empleado[i],nombre);
+                        //strcpy(empleado[i]->nombre,nombre);//sizeof(arrayPersonas[i].nombre));
+                        employee_setHorasTrabajadas(empleado[i],horasTrabajadas);
+                        //empleado[i]->horasTrabajadas=atoi(horasTrabajadas);//sizeof(arrayPersonas[i].apellido));
+                        employee_setSueldo(empleado[i],sueldo);
+                        //empleado[i]->sueldo = atoi(sueldo);
                         ll_add(miLista,empleado[i]);
                         i++;
-                        }
+                        }/*
                         else
                         {
                             break;
-                        }
-                    }while(!feof(pArchivo) && i<len);
-                     //ll_add(miLista,empleado);
-                     /*for(i=0;i<1000;i++)
-                     {
-                         printf("%d %s %d %d",empleado[i]->id,empleado[i]->nombre,empleado[i]->horasTrabajadas,empleado[i]->sueldo);
-                     }*/
+                        }*/
+                    }while(!feof(pArchivo) /*&& i<len*/);
                 break;
             case 2:
                 pArchivo=fopen("data.csv","rb");
@@ -66,31 +72,34 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                 if(pArchivo!=NULL)
                 {
                     fprintf(pArchivo,"\n%d,%s,%d,%d",15,"Juan",120,5000);
-
                 }
                 break;
             case 4:
-
+                //USAR SETTER
 
                 break;
             case 5:
+
+                index=2;//HARCODEO, CAMBIAR DESPUES
+                ll_remove(miLista,index-1);
                 len=ll_len(miLista);
-                printf("repitiendo e2\n");
+                printf("Borrando elemento 2\n");
                 for(int i=0;i<len;i++)
                 {
                    aux = (Employee*) ll_get(miLista,i);
                    printf("(%d) %d %s %d %d\n",i+1,aux->id,aux->nombre,aux->sueldo,aux->horasTrabajadas);
                 }
+
                 break;
             case 6:
-                    ll_add(miLista,aux);
                     len=ll_len(miLista);
-                    printf("repitiendo e2\n");
+                    printf("\nLOS PIBES\n");
                     for(int i=0;i<len;i++)
                     {
                        aux = (Employee*) ll_get(miLista,i);
                        printf("(%d) %d %s %d %d\n",i+1,aux->id,aux->nombre,aux->sueldo,aux->horasTrabajadas);
                     }
+                    printf("\n");
                 /*len= ll_len(miLista);
                 printf("\n");
                 for(int i=0;i<len;i++)

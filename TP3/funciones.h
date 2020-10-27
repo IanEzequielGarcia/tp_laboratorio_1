@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+#include "parser.h"
 #include <string.h>
 #define TAM 1000
 
