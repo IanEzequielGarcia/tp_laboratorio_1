@@ -111,3 +111,40 @@ int employee_getSueldo(Employee* this,int* sueldo)
     }
     return getteo;
 }
+Employee* employee_new()
+{
+    int sueldoInt,horasTrabajadasInt;
+    char nombre[128];
+    char horasTrabajadas[50];
+    char sueldo[50];
+
+    Employee* nuevoEmpleado;
+
+    if(!(nuevoEmpleado=(Employee*)malloc(sizeof(Employee))))
+    {
+        printf("No hay espacio!");
+    }
+    else
+    {
+        printf("Ingrese nombre ");
+        fflush(stdin);
+        scanf("%[^\n]",nombre);
+        employee_setNombre(nuevoEmpleado,nombre);
+        printf("Ingrese sueldo ");
+        fflush(stdin);
+        scanf("%s",sueldo);
+        sueldoInt=atoi(sueldo);
+        employee_setSueldo(nuevoEmpleado,sueldoInt);
+
+        printf("Ingrese horas trabajadas ");
+        fflush(stdin);
+        scanf("%s",horasTrabajadas);
+        horasTrabajadasInt=atoi(horasTrabajadas);
+        employee_setHorasTrabajadas(nuevoEmpleado,horasTrabajadasInt);
+    }
+   return nuevoEmpleado;
+}
+/*Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr)
+{
+
+}*/

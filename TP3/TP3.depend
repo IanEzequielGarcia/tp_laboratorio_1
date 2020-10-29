@@ -209,7 +209,7 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1603804986 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\parser.c
+1603938339 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -218,9 +218,12 @@
 
 1590767427 c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\linkedlist.h
 
-1603802552 c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\employee.h
+1603924397 c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\employee.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
 
-1603800662 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\controller.c
+1603939924 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -228,9 +231,9 @@
 	"Employee.h"
 	"parser.h"
 
-1603803874 c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\parser.h
+1603811361 c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\parser.h
 
-1603802610 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\employee.c
+1603938094 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\employee.c
 	<stdlib.h>
 	"Employee.h"
 	<string.h>
@@ -247,7 +250,7 @@
 
 1561499216 c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\controller.h
 
-1603801145 c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\funciones.h
+1603920975 c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\funciones.h
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -256,6 +259,6 @@
 	"parser.h"
 	<string.h>
 
-1603805918 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\funciones.c
+1603991973 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tp3\funciones.c
 	"funciones.h"
 

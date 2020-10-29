@@ -18,12 +18,13 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
     int opcion;
     int index;
     int len;
-    int i=0;
-    int cant;
+    int sueldoInt,horasTrabajadasInt;
     char nombre[50];
     char horasTrabajadas[50];
     char sueldo[50];
     char id[50];
+    int i=0;
+    int banderaParsearArchivo=0;
     FILE* pArchivo;
 
     do
@@ -39,56 +40,75 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                         printf("Archivo incorrecto");
                         break;
                     }
+                    //llamar al parser desde el controlador
 
-                    do
+                    if(!(parser_EmployeeFromText(pArchivo, miLista)))
                     {
-                        //len=parser_EmployeeFromText(pArchivo, empleado,i);
-                        cant = fscanf(pArchivo,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horasTrabajadas,sueldo);
-                        if(cant==4)
-                        {
-                        empleado[i]=(Employee*)malloc(sizeof(Employee));
-                        employee_setId(empleado[i],i+1);
-                        //empleado[i]->id = atoi(id);
-                        employee_setNombre(empleado[i],nombre);
-                        //strcpy(empleado[i]->nombre,nombre);//sizeof(arrayPersonas[i].nombre));
-                        employee_setHorasTrabajadas(empleado[i],horasTrabajadas);
-                        //empleado[i]->horasTrabajadas=atoi(horasTrabajadas);//sizeof(arrayPersonas[i].apellido));
-                        employee_setSueldo(empleado[i],sueldo);
-                        //empleado[i]->sueldo = atoi(sueldo);
-                        ll_add(miLista,empleado[i]);
-                        i++;
-                        }/*
-                        else
-                        {
-                            break;
-                        }*/
-                    }while(!feof(pArchivo) /*&& i<len*/);
+                       printf("No se pudo cargar el archivo");
+                    }
+                    banderaParsearArchivo=1;
                 break;
             case 2:
                 pArchivo=fopen("data.csv","rb");
                 break;
             case 3:
-                pArchivo = fopen("data.csv", "a");//Testeo CSV
-                if(pArchivo!=NULL)
+                if(banderaParsearArchivo)
                 {
-                    fprintf(pArchivo,"\n%d,%s,%d,%d",15,"Juan",120,5000);
+                    len=ll_len(miLista);
+                    i=len+1;
+                    empleado[i]=employee_new();
+                    employee_setId(empleado[i],i);
+                    ll_add(miLista,empleado[i]);
+                }
+                else
+                {
+                    printf("Carge el archivo primero");
                 }
                 break;
-            case 4:
+            case 4://no anda
+                if(banderaParsearArchivo)
+                {
+                printf("Quien va a modificar?");
+                scanf("%d",&index);
+                i=index-1;
+                if(!(empleado[i]=(Employee*)malloc(sizeof(Employee))))
+                {
+                    printf("No hay espacio!");
+                    break;
+                }
+                employee_setId(empleado[i],i);
+                printf("Ingrese nombre");
+                fflush(stdin);
+                scanf("%[^\n]",nombre);
+                employee_setNombre(empleado[i],nombre);
+                printf("Ingrese sueldo");
+                fflush(stdin);
+                scanf("%s",sueldo);
+                sueldoInt=atoi(sueldo);
+                employee_setSueldo(empleado[i],sueldoInt);
+
+                printf("Ingrese horas trabajadas");
+                fflush(stdin);
+                scanf("%s",horasTrabajadas);
+                horasTrabajadasInt=atoi(horasTrabajadas);
+                employee_setHorasTrabajadas(empleado[i],horasTrabajadasInt);
+                }
+                //Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr)
+
+                //empleado[i]->horasTrabajadas=atoi(horasTrabajadas);
                 //USAR SETTER
 
                 break;
-            case 5:
-
-                index=2;//HARCODEO, CAMBIAR DESPUES
+            case 5://NO ANDA EL MOSTRAR, CHECKEAR SI EXISTE EL QUE QUIERE BORRARSE
+                //int elementoBorrado;
+                printf("Quien va a borrar?");
+                scanf("%d",&index);
+                //1elementoBorrado=employee_getId(miLista,index-1);
                 ll_remove(miLista,index-1);
                 len=ll_len(miLista);
-                printf("Borrando elemento 2\n");
-                for(int i=0;i<len;i++)
-                {
-                   aux = (Employee*) ll_get(miLista,i);
-                   printf("(%d) %d %s %d %d\n",i+1,aux->id,aux->nombre,aux->sueldo,aux->horasTrabajadas);
-                }
+                printf("Borrando elemento seleccionado\n");
+                //aux = (Employee*) ll_get(miLista,index-1);
+                //printf("(%d) %d %s %d %d\n",i+1,aux->id,aux->nombre,aux->sueldo,aux->horasTrabajadas);
 
                 break;
             case 6:
@@ -100,13 +120,6 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                        printf("(%d) %d %s %d %d\n",i+1,aux->id,aux->nombre,aux->sueldo,aux->horasTrabajadas);
                     }
                     printf("\n");
-                /*len= ll_len(miLista);
-                printf("\n");
-                for(int i=0;i<len;i++)
-                {
-                   aux = (Employee*) ll_get(miLista,i);
-                   printf("(%d) %d %s %d %d\n",i+1,aux->id,aux->nombre,aux->sueldo,aux->horasTrabajadas);
-                }*/
                 break;
             case 7:
                 ll_sort(miLista,employee_CompareByName,1);//1 menor a mayor 0 mayor a menor
@@ -124,11 +137,9 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                    aux = (Employee*) ll_get(miLista,i);
                    printf("(%d) %d %s %d %d\n",i+1,aux->id,aux->nombre,aux->sueldo,aux->horasTrabajadas);
                 }
-
                 break;
-            case 8:
-                len=ll_len(miLista);
-                fwrite(miLista,1,len,pArchivo);
+            case 8://no funciona
+                controller_saveAsText(pArchivo, miLista);
                 break;
             case 9:
 
@@ -140,6 +151,7 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
             default:
                 printf("ERROR intente nuevamente");
                 break;
+
         }
     }while(menu!=1);
 }

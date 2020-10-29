@@ -50,6 +50,9 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 
 int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {
+    int len;
+    len=ll_len(pArrayListEmployee);
+    fwrite(pArrayListEmployee,sizeof(Employee*),len,path);
 
     return 1;
 }

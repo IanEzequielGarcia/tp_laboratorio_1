@@ -1,5 +1,9 @@
 #ifndef employee_H_INCLUDED
 #define employee_H_INCLUDED
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define TAM 1000
 typedef struct
 {
     int id;
