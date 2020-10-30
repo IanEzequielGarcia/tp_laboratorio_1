@@ -144,7 +144,33 @@ Employee* employee_new()
     }
    return nuevoEmpleado;
 }
-/*Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr)
+Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr)
 {
+    Employee* EmpleadoAux;
+    int sueldoInt;
+    int horasTrabajadasInt;
+    int idInt;
 
-}*/
+    if(!(EmpleadoAux=(Employee*)malloc(sizeof(Employee))))
+    {
+        printf("No hay espacio!");
+    }
+    else
+    {
+        printf("f");
+        idInt=atoi(idStr);
+
+        printf("b");
+        employee_setId(EmpleadoAux,idInt);
+        printf("b");
+        employee_setNombre(EmpleadoAux,nombreStr);
+        printf("a");
+        sueldoInt=atoi(sueldoStr);
+        employee_setSueldo(EmpleadoAux,sueldoInt);
+        horasTrabajadasInt=atoi(horasTrabajadasStr);
+        printf("a");
+        employee_setHorasTrabajadas(EmpleadoAux,horasTrabajadasInt);
+    }
+
+    return EmpleadoAux;
+}

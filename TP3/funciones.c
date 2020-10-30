@@ -1,16 +1,16 @@
 #include "funciones.h"
 /****************************************************
     Menu:
-     1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).
+     1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).//listo
      2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).
-     3. Alta de empleado
+     3. Alta de empleado //listo
      4. Modificar datos de empleado
-     5. Baja de empleado
-     6. Listar empleados
-     7. Ordenar empleados
+     5. Baja de empleado //listo
+     6. Listar empleados //listo
+     7. Ordenar empleados //listo
      8. Guardar los datos de los empleados en el archivo data.csv (modo texto).
      9. Guardar los datos de los empleados en el archivo data.csv (modo binario).
-    10. Salir
+    10. Salir //listo
 *****************************************************/
 void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
 {
@@ -19,14 +19,13 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
     int index;
     int len;
     int sueldoInt,horasTrabajadasInt;
-    char nombre[50];
-    char horasTrabajadas[50];
-    char sueldo[50];
-    char id[50];
+    char nombre[128];
+    char horasTrabajadas[64];
+    char sueldo[64];
+    char id[64];
     int i=0;
     int banderaParsearArchivo=0;
     FILE* pArchivo;
-
     do
     {
         printf("1.Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n2.Cargar los datos de los empleados desde el archivo data.csv (modo binario).\n3.Aniadir Empleado\n4.Modificar Empleado\n5.Dar de baja\n6.Mostrar Empleados\n7.Ordenar Empleados\n8.Guardar los datos de los empleados en el archivo data.csv (modo texto).\n9.Guardar los datos de los empleados en el archivo data.csv (modo binario).\n10.salir\n");
@@ -37,7 +36,7 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                     pArchivo=fopen("data.csv","r");
                     if(pArchivo==NULL)
                     {
-                        printf("Archivo incorrecto");
+                        printf("Archivo incorrecto\n");
                         break;
                     }
                     //llamar al parser desde el controlador
@@ -49,7 +48,17 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                     banderaParsearArchivo=1;
                 break;
             case 2:
-                pArchivo=fopen("data.csv","rb");
+               pArchivo=fopen("data.bin","rb");
+                if(pArchivo==NULL)
+                {
+                    printf("Archivo incorrecto\n");
+                    break;
+                }
+                if(!(parser_EmployeeFromBinary(pArchivo, miLista)))
+                {
+                   printf("No se pudo cargar el archivo");
+                }
+                fclose(pArchivo);
                 break;
             case 3:
                 if(banderaParsearArchivo)
@@ -65,39 +74,33 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                     printf("Carge el archivo primero");
                 }
                 break;
-            case 4://no anda
+            case 4://no anda Probar set o pop y push
                 if(banderaParsearArchivo)
                 {
-                printf("Quien va a modificar?");
-                scanf("%d",&index);
-                i=index-1;
-                if(!(empleado[i]=(Employee*)malloc(sizeof(Employee))))
-                {
-                    printf("No hay espacio!");
-                    break;
-                }
-                employee_setId(empleado[i],i);
-                printf("Ingrese nombre");
-                fflush(stdin);
-                scanf("%[^\n]",nombre);
-                employee_setNombre(empleado[i],nombre);
-                printf("Ingrese sueldo");
-                fflush(stdin);
-                scanf("%s",sueldo);
-                sueldoInt=atoi(sueldo);
-                employee_setSueldo(empleado[i],sueldoInt);
+                    printf("Quien va a modificar?");
+                    scanf("%s",id);
+                    index=atoi(id);
+                    //employee_setId(empleado[i],i);
+                    printf("Ingrese nombre");
+                    fflush(stdin);
+                    scanf("%[^\n]",nombre);
+                    //employee_setNombre(empleado[i],nombre);
+                    printf("Ingrese sueldo");
+                    fflush(stdin);
+                    scanf("%s",sueldo);
+                    //sueldoInt=atoi(sueldo);
+                    //employee_setSueldo(empleado[i],sueldoInt);
 
-                printf("Ingrese horas trabajadas");
-                fflush(stdin);
-                scanf("%s",horasTrabajadas);
-                horasTrabajadasInt=atoi(horasTrabajadas);
-                employee_setHorasTrabajadas(empleado[i],horasTrabajadasInt);
+                    printf("Ingrese horas trabajadas");
+                    fflush(stdin);
+                    scanf("%s",horasTrabajadas);
+                    //horasTrabajadasInt=atoi(horasTrabajadas);
+                    //employee_setHorasTrabajadas(empleado[i],horasTrabajadasInt);
+                    aux=employee_newParametros(id,nombre,horasTrabajadas,sueldo);
+                    ll_set(miLista,index-1,aux);
                 }
-                //Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr)
-
                 //empleado[i]->horasTrabajadas=atoi(horasTrabajadas);
                 //USAR SETTER
-
                 break;
             case 5://NO ANDA EL MOSTRAR, CHECKEAR SI EXISTE EL QUE QUIERE BORRARSE
                 //int elementoBorrado;
