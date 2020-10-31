@@ -2,14 +2,14 @@
 /****************************************************
     Menu:
      1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).//listo
-     2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).
+     2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).//listo
      3. Alta de empleado //listo
-     4. Modificar datos de empleado
+     4. Modificar datos de empleado //listo
      5. Baja de empleado //listo
      6. Listar empleados //listo
      7. Ordenar empleados //listo
-     8. Guardar los datos de los empleados en el archivo data.csv (modo texto).
-     9. Guardar los datos de los empleados en el archivo data.csv (modo binario).
+     8. Guardar los datos de los empleados en el archivo data.csv (modo texto).//----
+     9. Guardar los datos de los empleados en el archivo data.csv (modo binario).//----
     10. Salir //listo
 *****************************************************/
 void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
@@ -46,9 +46,10 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                        printf("No se pudo cargar el archivo");
                     }
                     banderaParsearArchivo=1;
+                    fclose(pArchivo);
                 break;
             case 2:
-               pArchivo=fopen("data.bin","rb");
+               pArchivo=fopen("data.csv","rb");
                 if(pArchivo==NULL)
                 {
                     printf("Archivo incorrecto\n");
@@ -58,16 +59,30 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                 {
                    printf("No se pudo cargar el archivo");
                 }
+                banderaParsearArchivo=1;
                 fclose(pArchivo);
                 break;
             case 3:
                 if(banderaParsearArchivo)
                 {
                     len=ll_len(miLista);
+                    printf("%s","aaaaa");
                     i=len+1;
-                    empleado[i]=employee_new();
-                    employee_setId(empleado[i],i);
+                    //strcpy(id[0],i);
+                    //id[0]=i;
+                    printf("Ingrese nombre");
+                    fflush(stdin);
+                    scanf("%[^\n]",nombre);
+                    printf("Ingrese sueldo");
+                    fflush(stdin);
+                    scanf("%s",sueldo);
+                    printf("Ingrese horas trabajadas");
+                    fflush(stdin);
+                    scanf("%s",horasTrabajadas);
+                    aux=employee_newParametros(id,nombre,horasTrabajadas,sueldo);
+                    empleado[i]=aux;
                     ll_add(miLista,empleado[i]);
+
                 }
                 else
                 {
@@ -112,7 +127,6 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                 printf("Borrando elemento seleccionado\n");
                 //aux = (Employee*) ll_get(miLista,index-1);
                 //printf("(%d) %d %s %d %d\n",i+1,aux->id,aux->nombre,aux->sueldo,aux->horasTrabajadas);
-
                 break;
             case 6:
                     len=ll_len(miLista);
@@ -145,11 +159,10 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                 controller_saveAsText(pArchivo, miLista);
                 break;
             case 9:
-
+                controller_saveAsBinary(pArchivo, miLista);
                 break;
             case 10:
                 menu=1;
-                fclose(pArchivo);
                 break;
             default:
                 printf("ERROR intente nuevamente");

@@ -51,15 +51,21 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {
     int len;
+    fopen(path,"w");
     len=ll_len(pArrayListEmployee);
     fwrite(pArrayListEmployee,sizeof(Employee*),len,path);
-
+    fclose(path);
     return 1;
 }
 
 
 int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {
+    int len;
+    fopen(path,"wb");
+    len=ll_len(pArrayListEmployee);
+    fwrite(pArrayListEmployee,sizeof(Employee*),len,path);
+    fclose(path);
     return 1;
 }
 

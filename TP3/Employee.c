@@ -113,35 +113,8 @@ int employee_getSueldo(Employee* this,int* sueldo)
 }
 Employee* employee_new()
 {
-    int sueldoInt,horasTrabajadasInt;
-    char nombre[128];
-    char horasTrabajadas[50];
-    char sueldo[50];
-
-    Employee* nuevoEmpleado;
-
-    if(!(nuevoEmpleado=(Employee*)malloc(sizeof(Employee))))
-    {
-        printf("No hay espacio!");
-    }
-    else
-    {
-        printf("Ingrese nombre ");
-        fflush(stdin);
-        scanf("%[^\n]",nombre);
-        employee_setNombre(nuevoEmpleado,nombre);
-        printf("Ingrese sueldo ");
-        fflush(stdin);
-        scanf("%s",sueldo);
-        sueldoInt=atoi(sueldo);
-        employee_setSueldo(nuevoEmpleado,sueldoInt);
-
-        printf("Ingrese horas trabajadas ");
-        fflush(stdin);
-        scanf("%s",horasTrabajadas);
-        horasTrabajadasInt=atoi(horasTrabajadas);
-        employee_setHorasTrabajadas(nuevoEmpleado,horasTrabajadasInt);
-    }
+    Employee* nuevoEmpleado=NULL;
+    nuevoEmpleado=(Employee*)malloc(sizeof(Employee));
    return nuevoEmpleado;
 }
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr)
@@ -151,24 +124,20 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
     int horasTrabajadasInt;
     int idInt;
 
-    if(!(EmpleadoAux=(Employee*)malloc(sizeof(Employee))))
+    EmpleadoAux=employee_new();
+
+    if(EmpleadoAux==NULL)
     {
         printf("No hay espacio!");
     }
     else
     {
-        printf("f");
         idInt=atoi(idStr);
-
-        printf("b");
         employee_setId(EmpleadoAux,idInt);
-        printf("b");
         employee_setNombre(EmpleadoAux,nombreStr);
-        printf("a");
         sueldoInt=atoi(sueldoStr);
         employee_setSueldo(EmpleadoAux,sueldoInt);
         horasTrabajadasInt=atoi(horasTrabajadasStr);
-        printf("a");
         employee_setHorasTrabajadas(EmpleadoAux,horasTrabajadasInt);
     }
 

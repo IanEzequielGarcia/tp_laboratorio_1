@@ -22,7 +22,7 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 
         if(cant==4)
         {
-            if(!(EmpleadoAux[i]=(Employee*)malloc(sizeof(Employee))))
+            if(!(EmpleadoAux[i]=employee_new()))
             {
                 printf("No hay espacio!");
             }
@@ -63,9 +63,10 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 
         if(cant==4)
         {
-            if(!(EmpleadoAux[i]=(Employee*)malloc(sizeof(Employee))))
+           if(!(EmpleadoAux[i]=employee_new()))
             {
                 printf("No hay espacio!");
+                break;
             }
             else
             {
