@@ -7,7 +7,6 @@
 int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 {
     int cant;
-    int sueldoInt,horasTrabajadasInt;
     char nombre[50];
     char horasTrabajadas[50];
     char sueldo[50];
@@ -28,12 +27,7 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
             }
             else
             {
-                employee_setId(EmpleadoAux[i],i+1);
-                employee_setNombre(EmpleadoAux[i],nombre);
-                horasTrabajadasInt=atoi(horasTrabajadas);
-                employee_setHorasTrabajadas(EmpleadoAux[i],horasTrabajadasInt);
-                sueldoInt=atoi(sueldo);
-                employee_setSueldo(EmpleadoAux[i],sueldoInt);
+                EmpleadoAux[i]=employee_newParametros(id,nombre,horasTrabajadas,sueldo);
                 ll_add(pArrayListEmployee,EmpleadoAux[i]);
                 i++;
                 sePudo=1;
@@ -48,7 +42,6 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 {
     int cant;
-    int sueldoInt,horasTrabajadasInt;
     char nombre[50];
     char horasTrabajadas[50];
     char sueldo[50];
@@ -70,12 +63,7 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
             }
             else
             {
-                employee_setId(EmpleadoAux[i],i+1);
-                employee_setNombre(EmpleadoAux[i],nombre);
-                horasTrabajadasInt=atoi(horasTrabajadas);
-                employee_setHorasTrabajadas(EmpleadoAux[i],horasTrabajadasInt);
-                sueldoInt=atoi(sueldo);
-                employee_setSueldo(EmpleadoAux[i],sueldoInt);
+                EmpleadoAux[i]=employee_newParametros(id,nombre,horasTrabajadas,sueldo);
                 ll_add(pArrayListEmployee,EmpleadoAux[i]);
                 i++;
                 sePudo=1;

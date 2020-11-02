@@ -56,7 +56,7 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                     printf("Carge el archivo primero\n");
                 }
                 break;
-            case 4://no anda Probar set o pop y push
+            case 4:
                 if(banderaParsearArchivo)
                 {
                     controller_editEmployee(miLista);
@@ -65,7 +65,6 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                 {
                     printf("Carge el archivo primero\n");
                 }
-                //empleado[i]->horasTrabajadas=atoi(horasTrabajadas);
                 //USAR SETTER
                 break;
             case 5://esto anda de maravilla
