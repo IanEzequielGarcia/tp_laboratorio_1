@@ -8,14 +8,18 @@
 int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 {
     int sePudo=0;
+    FILE* pArchivo;
+    pArchivo=fopen("data.csv","r");
+
     if(path!=NULL)
     {
-        sePudo++;
+        if(parser_EmployeeFromText(pArchivo, pArrayListEmployee))
+        {
+           sePudo++;
+        }
     }
-    if(parser_EmployeeFromText(path, pArrayListEmployee))
-    {
-       sePudo++;
-    }
+    fclose(pArchivo);
+
     return sePudo;
 }
 
@@ -23,14 +27,16 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 {
     int sePudo=0;
-    if(path!=NULL)
+    FILE* pArchivo;
+    pArchivo=fopen("data.bin","rb");
+    if(pArchivo!=NULL)
     {
-        sePudo++;
+        if(parser_EmployeeFromBinary(pArchivo, pArrayListEmployee))
+        {
+           sePudo++;
+        }
     }
-    if(parser_EmployeeFromBinary(path, pArrayListEmployee))
-    {
-       sePudo++;
-    }
+    fclose(pArchivo);
     return sePudo;
 }
 
@@ -144,7 +150,6 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-    int len;
     int sePudo=0;
 
     ll_sort(pArrayListEmployee,employee_CompareByName,1);//1 menor a mayor 0 mayor a menor

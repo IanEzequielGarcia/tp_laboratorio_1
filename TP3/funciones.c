@@ -8,8 +8,8 @@
      5. Baja de empleado //listo
      6. Listar empleados //listo
      7. Ordenar empleados //listo
-     8. Guardar los datos de los empleados en el archivo data.csv (modo texto).//----
-     9. Guardar los datos de los empleados en el archivo data.csv (modo binario).//----
+     8. Guardar los datos de los empleados en el archivo data.csv (modo texto).//listo
+     9. Guardar los datos de los empleados en el archivo data.csv (modo binario).//listo
     10. Salir //listo
 *****************************************************/
 void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
@@ -18,7 +18,6 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
     int opcion;
 
     int banderaParsearArchivo=0;
-    FILE* pArchivo;
     do
     {
         printf("1.Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n2.Cargar los datos de los empleados desde el archivo data.csv (modo binario).\n3.Aniadir Empleado\n4.Modificar Empleado\n5.Dar de baja\n6.Mostrar Empleados\n7.Ordenar Empleados\n8.Guardar los datos de los empleados en el archivo data.csv (modo texto).\n9.Guardar los datos de los empleados en el archivo data.csv (modo binario).\n10.salir\n");
@@ -26,22 +25,20 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
         switch(opcion)
         {
             case 1:
-                    pArchivo=fopen("data.csv","r");
-                    if(!(controller_loadFromText(pArchivo, miLista)==2))
+                    if(!(controller_loadFromText("data.csv", miLista)))
                     {
                         printf("Error al leer el archivo");
+                        break;
                     }
-                    fclose(pArchivo);
                     banderaParsearArchivo=1;
                 break;
             case 2:
-                pArchivo=fopen("data.csv","rb");
-                if(!(controller_loadFromBinary(pArchivo, miLista)==2))
+                if(!(controller_loadFromBinary("data.bin", miLista)))
                 {
                     printf("Error al leer el archivo");
+                    break;
                 }
                 banderaParsearArchivo=1;
-                fclose(pArchivo);
                 break;
             case 3:
                 if(banderaParsearArchivo)
@@ -114,7 +111,7 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                    }
                 break;
             case 9:
-                controller_saveAsBinary("data.csv", miLista);
+                controller_saveAsBinary("data.bin", miLista);
                 break;
             case 10:
                 menu=1;

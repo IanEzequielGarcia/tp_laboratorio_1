@@ -24,7 +24,7 @@
 int main()
 {
     LinkedList* miLista;
-    Employee* aux;
+    Employee* aux=NULL;
     int len;
 
     miLista = ll_newLinkedList();//lamar al constructor

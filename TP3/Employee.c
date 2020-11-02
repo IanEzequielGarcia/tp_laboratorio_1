@@ -5,7 +5,6 @@
 int employee_CompareByName(Employee* empleadoUno,Employee* empleadoDos)
 {
     return strcmp(empleadoUno->nombre,empleadoDos->nombre);
-
 }
 int employee_CompareById(Employee* empleadoUno,Employee* empleadoDos)
 {
