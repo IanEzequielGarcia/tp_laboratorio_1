@@ -56,6 +56,10 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
             case 4:
                 if(banderaParsearArchivo)
                 {
+                    if(!(controller_ListEmployee(miLista)))
+                    {
+                        printf("No se pudo mostrar la lista\n");
+                    }
                     controller_editEmployee(miLista);
                 }
                 else
@@ -67,6 +71,10 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
             case 5://esto anda de maravilla
                 if(banderaParsearArchivo)
                 {
+                    if(!(controller_ListEmployee(miLista)))
+                    {
+                        printf("No se pudo mostrar la lista\n");
+                    }
                     if(!(controller_removeEmployee(miLista)))
                     {
                         printf("No se pudo borrar el elemento seleccionado\n");
@@ -86,7 +94,7 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                 {
                     if(!(controller_ListEmployee(miLista)))
                     {
-                        printf("No se pudo mostrar\n");
+                        printf("No se pudo mostrar la lista\n");
                     }
                 }
                 else
@@ -104,14 +112,31 @@ void Menu(Employee* empleado[],LinkedList* miLista,Employee* aux)
                     printf("Carge el archivo primero\n");
                 }
                 break;
-            case 8://no funciona
-                if(!(controller_saveAsText("data.csv", miLista)))
-                   {
-                       printf("\nError al guardar en el archivo\n");
-                   }
+            case 8://funciona
+                if(banderaParsearArchivo)
+                {
+                    if(!(controller_saveAsText("data.csv", miLista)))
+                       {
+                           printf("\nError al guardar, reintente\n");
+                       }
+                }
+                else
+                {
+                    printf("Carge el archivo primero\n");
+                }
                 break;
             case 9:
-                controller_saveAsBinary("data.bin", miLista);
+                if(banderaParsearArchivo)
+                {
+                    if(!(controller_saveAsBinary("data.bin", miLista)))
+                    {
+                        printf("\nError al guardar, reintente\n");
+                    }
+                }
+                else
+                {
+                    printf("Carge el archivo primero\n");
+                }
                 break;
             case 10:
                 menu=1;

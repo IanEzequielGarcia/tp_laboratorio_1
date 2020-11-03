@@ -14,16 +14,15 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
     int i=0;
     int sePudo=0;
     Employee* EmpleadoAux[TAM];
-
     do//llamar al parser desde el controlador
     {
         cant = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horasTrabajadas,sueldo);
-
         if(cant==4)
         {
-            if(!(EmpleadoAux[i]=employee_new()))
+           if(!(EmpleadoAux[i]=employee_new()))
             {
                 printf("No hay espacio!");
+                break;
             }
             else
             {

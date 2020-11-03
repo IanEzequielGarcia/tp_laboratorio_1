@@ -9,9 +9,9 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 {
     int sePudo=0;
     FILE* pArchivo;
-    pArchivo=fopen("data.csv","r");
+    pArchivo=fopen(path,"r");
 
-    if(path!=NULL)
+    if(pArchivo!=NULL)
     {
         if(parser_EmployeeFromText(pArchivo, pArrayListEmployee))
         {
@@ -28,7 +28,7 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 {
     int sePudo=0;
     FILE* pArchivo;
-    pArchivo=fopen("data.bin","rb");
+    pArchivo=fopen(path,"rb");
     if(pArchivo!=NULL)
     {
         if(parser_EmployeeFromBinary(pArchivo, pArrayListEmployee))
@@ -198,10 +198,10 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
     int sePudo=0;
 
-    ll_sort(pArrayListEmployee,employee_CompareByName,1);//1 menor a mayor 0 mayor a menor
+    ll_sort(pArrayListEmployee,(void*)employee_CompareByName,1);//1 menor a mayor 0 mayor a menor
     printf("Ordenados por Nombre\n");
     controller_ListEmployee(pArrayListEmployee);
-    ll_sort(pArrayListEmployee,employee_CompareById,1);//1 menor a mayor 0 mayor a menor
+    ll_sort(pArrayListEmployee,(void*)employee_CompareById,1);//1 menor a mayor 0 mayor a menor
     printf("Ordenados por id\n");
     controller_ListEmployee(pArrayListEmployee);
     sePudo++;

@@ -7,7 +7,4 @@
 #include "Employee.h"
 #include "parser.h"
 
-
-
 void Menu(Employee* [],LinkedList* ,Employee* );
-
