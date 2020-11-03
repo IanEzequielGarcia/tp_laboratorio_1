@@ -60,7 +60,7 @@ int employee_setNombre(Employee* this,char* nombre)
 int employee_getNombre(Employee* this,char* nombre)
 {
     int getteo=0;
-    if(this!=NULL && *nombre!='\0')
+    if(this!=NULL && nombre!=NULL)
     {
         strcpy(nombre,this->nombre);
         getteo = 1;
@@ -125,11 +125,7 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 
     EmpleadoAux=employee_new();
 
-    if(EmpleadoAux==NULL)
-    {
-        printf("No hay espacio!");
-    }
-    else
+    if(EmpleadoAux!=NULL)
     {
         idInt=atoi(idStr);
         employee_setId(EmpleadoAux,idInt);
@@ -152,12 +148,16 @@ int ValidarInt(char NumeroIngresado[])
     {
        if(isdigit(NumeroIngresado[i])!=0)
        {
-           resultado=0;
+           resultado=1;
        }
        else
        {
-           resultado=1;
-           break;
+           do
+           {
+            printf("REingrese numero ingresado\n");
+            scanf("%s",NumeroIngresado);
+            resultado=ValidarInt(NumeroIngresado);
+           }while(resultado!=1);
        }
     }
     return resultado;
@@ -172,12 +172,17 @@ int ValidarString(char StringIngresado[])
     {
        if(isalpha(StringIngresado[i])!=0)
        {
-           resultado=0;
+           resultado=1;
        }
        else
        {
-           resultado=1;
-           break;
+            do
+            {
+                printf("ReIngrese la palabra\n");
+                fflush(stdin);
+                scanf("%s",StringIngresado);
+                resultado=ValidarString(StringIngresado);
+            }while(resultado!=1);
        }
     }
     return resultado;

@@ -71,7 +71,10 @@ int main()
                     {
                         printf("No se pudo mostrar la lista\n");
                     }
-                    controller_editEmployee(miLista);
+                    if(!(controller_editEmployee(miLista)))
+                    {
+                        printf("No se pudo modificar el elemento seleccionado\n");
+                    }
                 }
                 else
                 {
@@ -151,6 +154,7 @@ int main()
                 break;
             case 10:
                 menu=1;
+                 printf("\n\nHasta la proximaa\n\n");
                 break;
             default:
                 printf("ERROR intente nuevamente");

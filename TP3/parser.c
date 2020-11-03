@@ -13,8 +13,8 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
     char id[50];
     int i=0;
     int sePudo=0;
-    Employee* EmpleadoAux[TAM];
-    do//llamar al parser desde el controlador
+    Employee* EmpleadoAux[TAM];//sacarle el tam
+    do
     {
         cant = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horasTrabajadas,sueldo);
         if(cant==4)

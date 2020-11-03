@@ -41,7 +41,7 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 }
 
 
-int controller_addEmployee(LinkedList* pArrayListEmployee)
+int controller_addEmployee(LinkedList* pArrayListEmployee)//hacer funcion
 {
     int len,i;
     char nombre[128];
@@ -49,7 +49,6 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     char sueldo[64];
     char id[64];
     int sePudo=0;
-    int validacion;
     Employee* empleado[TAM];
     Employee* aux;
 
@@ -59,34 +58,15 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     printf("Ingrese nombre ");
     fflush(stdin);
     scanf("%[^\n]",nombre);
-    validacion=ValidarString(nombre);
-    while(validacion)
-    {
-        printf("ReIngrese el nombre\n");
-        fflush(stdin);
-        scanf("%s",nombre);
-        validacion=ValidarString(nombre);
-    }
+    ValidarString(nombre);
     printf("Ingrese sueldo ");
     fflush(stdin);
     scanf("%s",sueldo);
-    validacion=ValidarInt(sueldo);
-    while(validacion)
-    {
-        printf("REingrese el sueldo\n");
-        scanf("%s",sueldo);
-        validacion=ValidarInt(sueldo);
-    }
+    ValidarInt(sueldo);
     printf("Ingrese horas trabajadas ");
     fflush(stdin);
     scanf("%s",horasTrabajadas);
-    validacion=ValidarInt(horasTrabajadas);
-    while(validacion)
-    {
-        printf("REingrese las horas trabajadas\n");
-        scanf("%s",horasTrabajadas);
-        validacion=ValidarInt(horasTrabajadas);
-    }
+    ValidarInt(horasTrabajadas);
     aux=employee_newParametros(id,nombre,horasTrabajadas,sueldo);
     empleado[i]=aux;
     ll_add(pArrayListEmployee,empleado[i]);
@@ -94,57 +74,60 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     return sePudo;
 }
 
-
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
-    Employee* aux;
+    Employee* aux=NULL;
 
+    int sePudo=1;
     char nombre[128];
     char horasTrabajadas[64];
     char sueldo[64];
-    char id[64];
     int index;
-    int validacion;
+    int opcion;
+    int sueldoInt,horasTrabajadasInt;//hacer funcion pedir datos
 
-    printf("Quien va a modificar? ");
-    scanf("%s",id);
-    index=atoi(id);
+    printf("Que indice va a modificar? ");
+    scanf("%d",&index);//verificar que existe primero
+    index--;
+    aux=(Employee*)ll_get(pArrayListEmployee,index);
+    if(employee_getId(aux,&index))
+    {
+        printf("Que quiere modificar?\n1.Nombre\n2.Sueldo\n3.Horas Trabajadas\n");
+        scanf("%d",&opcion);
+        switch(opcion)
+        {
+            case 1:
+                printf("Ingrese nombre ");
+                fflush(stdin);
+                scanf("%[^\n]",nombre);
+                ValidarString(nombre);
+                employee_setNombre(aux,nombre);
+                break;
+            case 2:
+                printf("Ingrese sueldo ");
+                fflush(stdin);
+                scanf("%s",sueldo);
+                ValidarInt(sueldo);
+                sueldoInt=atoi(sueldo);
+                employee_setSueldo(aux,sueldoInt);
+                break;
+            case 3:
+                printf("Ingrese horas trabajadas ");
+                fflush(stdin);
+                scanf("%s",horasTrabajadas);
+                ValidarInt(horasTrabajadas);
+                horasTrabajadasInt=atoi(horasTrabajadas);
+                employee_setHorasTrabajadas(aux,horasTrabajadasInt);
+                break;
+        }
 
-    printf("Ingrese nombre ");
-    fflush(stdin);
-    scanf("%[^\n]",nombre);
-    validacion=ValidarString(nombre);
-    while(validacion)
-    {
-        printf("ReIngrese el nombre\n");
-        fflush(stdin);
-        scanf("%s",nombre);
-        validacion=ValidarString(nombre);
     }
-    printf("Ingrese sueldo ");
-    fflush(stdin);
-    scanf("%s",sueldo);
-    validacion=ValidarInt(sueldo);
-    while(validacion)
+    else
     {
-        printf("REingrese el sueldo\n");
-        scanf("%s",sueldo);
-        validacion=ValidarInt(sueldo);
+        sePudo=0;
     }
-    printf("Ingrese horas trabajadas ");
-    fflush(stdin);
-    scanf("%s",horasTrabajadas);
-    validacion=ValidarInt(horasTrabajadas);
-    while(validacion)
-    {
-        printf("REingrese las horas trabajadas\n");
-        scanf("%s",horasTrabajadas);
-        validacion=ValidarInt(horasTrabajadas);
-    }
-    aux=employee_newParametros(id,nombre,horasTrabajadas,sueldo);
-    ll_set(pArrayListEmployee,index-1,aux);
 
-    return 1;
+    return sePudo;
 }
 
 
@@ -153,29 +136,20 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
     Employee* aux;
 
     int index;
-    int i;
-    int len;
     int sePudo=0;
     printf("Quien va a borrar?");
     scanf("%d",&index);
-    index--;
-    len=ll_len(pArrayListEmployee);
-    for(i=0;i<len;i++)
-    {
-        if(i==index)
-        {
-            aux = (Employee*) ll_get(pArrayListEmployee,index);
-            printf("(%6d) %6d %15s %8d %6d\n",i+1,aux->id,aux->nombre,aux->sueldo,aux->horasTrabajadas);
-            ll_remove(pArrayListEmployee,index);
-            len=ll_len(pArrayListEmployee);
-            sePudo=1;
-        }
-    }
+    index--;//hacerlo con getters
+    aux = (Employee*) ll_get(pArrayListEmployee,index);
+    printf("(%6d) %15s %8d %6d\n",index+1,aux->nombre,aux->sueldo,aux->horasTrabajadas);
+    ll_remove(pArrayListEmployee,index);
+    ll_len(pArrayListEmployee);
+    sePudo=1;
+
     return sePudo;
 }
 
-
-int controller_ListEmployee(LinkedList* pArrayListEmployee)
+int controller_ListEmployee(LinkedList* pArrayListEmployee)//hacer otra funcion para mostrar un solo empleado
 {
     int len=0;
     int sePudo=0;
@@ -194,9 +168,9 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 }
 
 
-int controller_sortEmployee(LinkedList* pArrayListEmployee)
+int controller_sortEmployee(LinkedList* pArrayListEmployee)//hacer switch y agregar mas opciones id nombre sueldo cantidad de horas trabajadas
 {
-    int sePudo=0;
+    int sePudo=0;//hacerle if a sort
 
     ll_sort(pArrayListEmployee,(void*)employee_CompareByName,1);//1 menor a mayor 0 mayor a menor
     printf("Ordenados por Nombre\n");
@@ -204,7 +178,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
     ll_sort(pArrayListEmployee,(void*)employee_CompareById,1);//1 menor a mayor 0 mayor a menor
     printf("Ordenados por id\n");
     controller_ListEmployee(pArrayListEmployee);
-    sePudo++;
+    sePudo=1;
     return sePudo;
 }
 
