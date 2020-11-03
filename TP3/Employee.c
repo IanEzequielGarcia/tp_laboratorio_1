@@ -142,3 +142,43 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 
     return EmpleadoAux;
 }
+int ValidarInt(char NumeroIngresado[])
+{
+    int i;
+    int longitud;
+    int resultado;
+    longitud=strlen(NumeroIngresado);
+    for(i=0;i<longitud;i++)
+    {
+       if(isdigit(NumeroIngresado[i])!=0)
+       {
+           resultado=0;
+       }
+       else
+       {
+           resultado=1;
+           break;
+       }
+    }
+    return resultado;
+}
+int ValidarString(char StringIngresado[])
+{
+    int i;
+    int longitud;
+    int resultado;
+    longitud=strlen(StringIngresado);
+    for(i=0;i<longitud;i++)
+    {
+       if(isalpha(StringIngresado[i])!=0)
+       {
+           resultado=0;
+       }
+       else
+       {
+           resultado=1;
+           break;
+       }
+    }
+    return resultado;
+}

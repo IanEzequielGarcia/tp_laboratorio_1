@@ -49,6 +49,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     char sueldo[64];
     char id[64];
     int sePudo=0;
+    int validacion;
     Employee* empleado[TAM];
     Employee* aux;
 
@@ -58,12 +59,34 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     printf("Ingrese nombre ");
     fflush(stdin);
     scanf("%[^\n]",nombre);
+    validacion=ValidarString(nombre);
+    while(validacion)
+    {
+        printf("ReIngrese el nombre\n");
+        fflush(stdin);
+        scanf("%s",nombre);
+        validacion=ValidarString(nombre);
+    }
     printf("Ingrese sueldo ");
     fflush(stdin);
     scanf("%s",sueldo);
+    validacion=ValidarInt(sueldo);
+    while(validacion)
+    {
+        printf("REingrese el sueldo\n");
+        scanf("%s",sueldo);
+        validacion=ValidarInt(sueldo);
+    }
     printf("Ingrese horas trabajadas ");
     fflush(stdin);
     scanf("%s",horasTrabajadas);
+    validacion=ValidarInt(horasTrabajadas);
+    while(validacion)
+    {
+        printf("REingrese las horas trabajadas\n");
+        scanf("%s",horasTrabajadas);
+        validacion=ValidarInt(horasTrabajadas);
+    }
     aux=employee_newParametros(id,nombre,horasTrabajadas,sueldo);
     empleado[i]=aux;
     ll_add(pArrayListEmployee,empleado[i]);
@@ -81,6 +104,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     char sueldo[64];
     char id[64];
     int index;
+    int validacion;
 
     printf("Quien va a modificar? ");
     scanf("%s",id);
@@ -89,12 +113,34 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     printf("Ingrese nombre ");
     fflush(stdin);
     scanf("%[^\n]",nombre);
+    validacion=ValidarString(nombre);
+    while(validacion)
+    {
+        printf("ReIngrese el nombre\n");
+        fflush(stdin);
+        scanf("%s",nombre);
+        validacion=ValidarString(nombre);
+    }
     printf("Ingrese sueldo ");
     fflush(stdin);
     scanf("%s",sueldo);
+    validacion=ValidarInt(sueldo);
+    while(validacion)
+    {
+        printf("REingrese el sueldo\n");
+        scanf("%s",sueldo);
+        validacion=ValidarInt(sueldo);
+    }
     printf("Ingrese horas trabajadas ");
     fflush(stdin);
     scanf("%s",horasTrabajadas);
+    validacion=ValidarInt(horasTrabajadas);
+    while(validacion)
+    {
+        printf("REingrese las horas trabajadas\n");
+        scanf("%s",horasTrabajadas);
+        validacion=ValidarInt(horasTrabajadas);
+    }
     aux=employee_newParametros(id,nombre,horasTrabajadas,sueldo);
     ll_set(pArrayListEmployee,index-1,aux);
 

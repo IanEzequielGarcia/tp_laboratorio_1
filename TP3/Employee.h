@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #define TAM 1000
 typedef struct
 {
@@ -31,4 +32,6 @@ int employee_getSueldo(Employee* this,int* sueldo);
 int employee_CompareByName(Employee* e1, Employee* e2); //(x)
 int employee_CompareById(Employee* e1, Employee* e2);   //(x)
 
+int ValidarInt(char[]);
+int ValidarString(char []);
 #endif // employee_H_INCLUDED
