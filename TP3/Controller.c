@@ -22,8 +22,6 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 
     return sePudo;
 }
-
-
 int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 {
     int sePudo=0;
@@ -39,8 +37,6 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
     fclose(pArchivo);
     return sePudo;
 }
-
-
 int controller_addEmployee(LinkedList* pArrayListEmployee)//hacer funcion
 {
     int len,i;
@@ -73,7 +69,6 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)//hacer funcion
     sePudo=1;
     return sePudo;
 }
-
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
     Employee* aux=NULL;
@@ -84,10 +79,10 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     char sueldo[64];
     int index;
     int opcion;
-    int sueldoInt,horasTrabajadasInt;//hacer funcion pedir datos
+    int sueldoInt,horasTrabajadasInt;
 
     printf("Que indice va a modificar? ");
-    scanf("%d",&index);//verificar que existe primero
+    scanf("%d",&index);
     index--;
     aux=(Employee*)ll_get(pArrayListEmployee,index);
     if(employee_getId(aux,&index))
@@ -129,26 +124,27 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
     return sePudo;
 }
-
-
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
-    Employee* aux;
+    Employee* aux=NULL;
 
     int index;
+    int id;
     int sePudo=0;
+
     printf("Quien va a borrar?");
     scanf("%d",&index);
     index--;//hacerlo con getters
-    aux = (Employee*) ll_get(pArrayListEmployee,index);
-    printf("(%6d) %15s %8d %6d\n",index+1,aux->nombre,aux->sueldo,aux->horasTrabajadas);
-    ll_remove(pArrayListEmployee,index);
-    ll_len(pArrayListEmployee);
-    sePudo=1;
-
+    id=index;
+    aux=(Employee*)ll_get(pArrayListEmployee,index);
+    if(employee_getId(aux,&index))
+    {
+        ll_remove(pArrayListEmployee,id);
+        ll_len(pArrayListEmployee);
+        sePudo=1;
+    }
     return sePudo;
 }
-
 int controller_ListEmployee(LinkedList* pArrayListEmployee)//hacer otra funcion para mostrar un solo empleado
 {
     int len=0;
@@ -166,23 +162,50 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)//hacer otra funcion 
 
     return sePudo;
 }
-
-
-int controller_sortEmployee(LinkedList* pArrayListEmployee)//hacer switch y agregar mas opciones id nombre sueldo cantidad de horas trabajadas
+int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
     int sePudo=0;//hacerle if a sort
+    int opcion;
+    printf("De que forma los quiere ordenar?\n1.Nombre(menor a mayor)\n2.id(menor a mayor)\n3.Salario(menor a mayor)\n4.Horas trabajadas(menor a mayor)\n");
+    scanf("%d",&opcion);
+    switch(opcion)
+    {
+        case 1:
+            if(!(ll_sort(pArrayListEmployee,(void*)employee_CompareByName,1)))//1 menor a mayor 0 mayor a menor
+            {
+                printf("Ordenados por Nombre\n");
+                controller_ListEmployee(pArrayListEmployee);
+                sePudo=1;
+            }
+            break;
+        case 2:
 
-    ll_sort(pArrayListEmployee,(void*)employee_CompareByName,1);//1 menor a mayor 0 mayor a menor
-    printf("Ordenados por Nombre\n");
-    controller_ListEmployee(pArrayListEmployee);
-    ll_sort(pArrayListEmployee,(void*)employee_CompareById,1);//1 menor a mayor 0 mayor a menor
-    printf("Ordenados por id\n");
-    controller_ListEmployee(pArrayListEmployee);
-    sePudo=1;
+            if(!(ll_sort(pArrayListEmployee,(void*)employee_CompareById,1)))//1 menor a mayor 0 mayor a menor
+            {
+                printf("Ordenados por id\n");
+                controller_ListEmployee(pArrayListEmployee);
+                sePudo=1;
+            }
+            break;
+        case 3:
+            if(!(ll_sort(pArrayListEmployee,(void*)employee_CompareBySalary,1)))//1 menor a mayor 0 mayor a menor
+            {
+                printf("Ordenados por sueldo\n");
+                controller_ListEmployee(pArrayListEmployee);
+                sePudo=1;
+            }
+            break;
+        case 4:
+            if(!(ll_sort(pArrayListEmployee,(void*)employee_CompareByWorkingHours,1)))//1 menor a mayor 0 mayor a menor
+            {
+                printf("Ordenados por horas trabajadas\n");
+                controller_ListEmployee(pArrayListEmployee);
+                sePudo=1;
+            }
+            break;
+    }
     return sePudo;
 }
-
-
 int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {
     Employee* empleado=NULL;

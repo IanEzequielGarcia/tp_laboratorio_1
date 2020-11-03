@@ -23,7 +23,40 @@ int employee_CompareById(Employee* empleadoUno,Employee* empleadoDos)
     }
     return compare;
 }
-
+int employee_CompareBySalary(Employee* empleadoUno,Employee* empleadoDos)
+{
+    int compare=0;
+    if(empleadoUno->sueldo>empleadoDos->sueldo)
+    {
+        compare=1;
+    }
+    else                                    //USAR GETTERS Y SETTERS
+                                            //NO USAR ->
+    {
+        if(empleadoUno->sueldo<empleadoDos->sueldo)
+        {
+            compare=-1;
+        }
+    }
+    return compare;
+}
+int employee_CompareByWorkingHours(Employee* empleadoUno,Employee* empleadoDos)
+{
+    int compare=0;
+    if(empleadoUno->horasTrabajadas>empleadoDos->horasTrabajadas)
+    {
+        compare=1;
+    }
+    else                                    //USAR GETTERS Y SETTERS
+                                            //NO USAR ->
+    {
+        if(empleadoUno->horasTrabajadas<empleadoDos->horasTrabajadas)
+        {
+            compare=-1;
+        }
+    }
+    return compare;
+}
 int employee_getId(Employee* this,int* id)
 {
     int getteo=0;

@@ -11,24 +11,22 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
     char horasTrabajadas[50];
     char sueldo[50];
     char id[50];
-    int i=0;
     int sePudo=0;
-    Employee* EmpleadoAux[TAM];//sacarle el tam
+    Employee* EmpleadoAux;
     do
     {
         cant = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horasTrabajadas,sueldo);
         if(cant==4)
         {
-           if(!(EmpleadoAux[i]=employee_new()))
+           if(!(EmpleadoAux=employee_new()))
             {
                 printf("No hay espacio!");
                 break;
             }
             else
             {
-                EmpleadoAux[i]=employee_newParametros(id,nombre,horasTrabajadas,sueldo);
-                ll_add(pArrayListEmployee,EmpleadoAux[i]);
-                i++;
+                EmpleadoAux=employee_newParametros(id,nombre,horasTrabajadas,sueldo);
+                ll_add(pArrayListEmployee,EmpleadoAux);
                 sePudo=1;
             }
         }
@@ -45,9 +43,8 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
     char horasTrabajadas[50];
     char sueldo[50];
     char id[50];
-    int i=0;
     int sePudo=0;
-    Employee* EmpleadoAux[TAM];
+    Employee* EmpleadoAux;
 
     do//llamar al parser desde el controlador
     {
@@ -55,16 +52,15 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 
         if(cant==4)
         {
-           if(!(EmpleadoAux[i]=employee_new()))
+           if(!(EmpleadoAux=employee_new()))
             {
                 printf("No hay espacio!");
                 break;
             }
             else
             {
-                EmpleadoAux[i]=employee_newParametros(id,nombre,horasTrabajadas,sueldo);
-                ll_add(pArrayListEmployee,EmpleadoAux[i]);
-                i++;
+                EmpleadoAux=employee_newParametros(id,nombre,horasTrabajadas,sueldo);
+                ll_add(pArrayListEmployee,EmpleadoAux);
                 sePudo=1;
             }
         }

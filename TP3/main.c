@@ -23,7 +23,7 @@
 int main()
 {
     LinkedList* miLista;
-    miLista = ll_newLinkedList();//lamar al constructor
+    miLista = ll_newLinkedList();
 
     int menu=0;
     int opcion;
@@ -80,9 +80,9 @@ int main()
                 {
                     printf("Carge el archivo primero\n");
                 }
-                //USAR SETTER
+
                 break;
-            case 5://esto anda de maravilla
+            case 5:
                 if(banderaParsearArchivo)
                 {
                     if(!(controller_ListEmployee(miLista)))
@@ -119,14 +119,17 @@ int main()
             case 7:
                 if(banderaParsearArchivo)
                 {
-                    controller_sortEmployee(miLista);
+                    if(!(controller_sortEmployee(miLista)))
+                    {
+                        printf("No se pudo ordenar la lista\n");
+                    }
                 }
                 else
                 {
                     printf("Carge el archivo primero\n");
                 }
                 break;
-            case 8://funciona
+            case 8:
                 if(banderaParsearArchivo)
                 {
                     if(!(controller_saveAsText("data.csv", miLista)))

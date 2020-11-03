@@ -31,6 +31,8 @@ int employee_getSueldo(Employee* this,int* sueldo);
 
 int employee_CompareByName(Employee* e1, Employee* e2); //(x)
 int employee_CompareById(Employee* e1, Employee* e2);   //(x)
+int employee_CompareBySalary(Employee* e1, Employee* e2);//(x)
+int employee_CompareByWorkingHours(Employee* e1, Employee* e2);//(x)
 
 int ValidarInt(char[]); //(x)
 int ValidarString(char []); //(x)
