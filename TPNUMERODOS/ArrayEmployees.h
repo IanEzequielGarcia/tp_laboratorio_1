@@ -1,4 +1,6 @@
 #define TAM 1000
+#include <stdio.h>
+#include <string.h>
 
 typedef struct eEmployee
 {
@@ -103,4 +105,4 @@ int findEmployeeById(eEmployee[],int);
  * \return eEmployee
  *
  */
-eEmployee addEmployee(eEmployee[],char[51],char[51],float,int,int,int);
+eEmployee addEmployee(eEmployee[],char[],char[],float,int,int,int);

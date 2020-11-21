@@ -82,7 +82,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     int sueldoInt,horasTrabajadasInt;
 
     printf("Que indice va a modificar? ");
-    scanf("%d",&index);
+    scanf("%d",&index);//verificar que existe primero
     index--;
     aux=(Employee*)ll_get(pArrayListEmployee,index);
     if(employee_getId(aux,&index))

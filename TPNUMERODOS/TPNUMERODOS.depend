@@ -4,9 +4,11 @@
 	<string.h>
 	"ArrayEmployees.h"
 
-1601572563 c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tpnumerodos\arrayemployees.h
+1601584363 c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tpnumerodos\arrayemployees.h
+	<stdio.h>
+	<string.h>
 
-1601576463 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tpnumerodos\arrayemployees.c
+1601582683 source:c:\users\ianch\desktop\programacion o escuela\segundocuatrimestre2020\laboratorio1\tp_laboratorio_1\tpnumerodos\arrayemployees.c
 	"ArrayEmployees.h"
 	<stdio.h>
 	<string.h>

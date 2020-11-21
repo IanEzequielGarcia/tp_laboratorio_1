@@ -1,6 +1,4 @@
 #include "ArrayEmployees.h"
-#include <stdio.h>
-#include <string.h>
 
 
 void LoadEmployees(eEmployee eEmployeeArray[],int cant)
@@ -25,9 +23,9 @@ void LoadEmployees(eEmployee eEmployeeArray[],int cant)
         scanf("%[^\n]",lastName);
         printf("Ingrese su sector\n");
         scanf("%d",&sector);
-        while(sector<-1)
+        while(sector<0)
         {
-            printf("Ingrese un sector mayor a -1\n");
+            printf("Ingrese un sector mayor a 0\n");
             scanf("%d",&sector);
         }
         printf("Ingrese su salario\n");
@@ -327,4 +325,3 @@ int findEmployeeById(eEmployee idEmployee[],int idBuscada)
     }
     return encontrado;
 }
-
