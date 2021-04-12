@@ -251,16 +251,15 @@ int ll_clear(LinkedList* this)
     int len;
     if(this!=NULL)
     {
-    	len=ll_len(this);
-        for(int i=0;i<len;i++)
+        do
         {
-        	len=ll_len(this);
-        	if((ll_remove(this,i))==-1)
+        	if((ll_remove(this,ll_len(this)-1))==-1)
         	{
         		returnAux = -1;
         		break;
         	}
-        }
+        	len=ll_len(this);
+        }while(len>0);
     }else{
     	returnAux = -1;
     }
